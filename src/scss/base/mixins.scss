@@ -1,0 +1,71 @@
+
+
+$minWidth: 375;
+$maxWidth: 1920;
+$maxWidthWrapper: 1828;
+
+$textColor: #494949;
+$fontSize: 16px;
+$fontFamily: 'CeraPro';
+
+@use "sass:math";
+// Адаптивное свойство
+@mixin adaptiv-value($property, $startSize, $minSize, $type:0){
+	$addSize: $startSize - $minSize;
+	@if $type==1 {
+		//Только если меньше контейнера
+		#{$property}: $startSize + px;
+		@media (max-width: #{$maxWidth + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth}));
+		}
+	} @else if $type == 2 {
+		//Только если больше контейнера
+		#{$property}: $startSize + px;
+		@media (mini-width: #{$maxWidthWrapper + px}){
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw -$minWidth + px) / #{$maxWidth - $minWidth}));
+		}
+	}@else{
+		//Всегда
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth})); //calc(12px + (20 + 20 * 0.7) * ((100vw - 320px) / 1920));
+	}
+}
+
+// Адаптивное свойство До
+@mixin adaptiv-value-to($property, $startSize, $minSize, $minWidth) {
+	$addSize: $startSize - $minSize;
+	//#{$property}: $minSize + px;
+	@media (min-width: #{$minWidth + px}) {
+	#{$property}: calc(
+		#{$minSize + px} + #{$addSize} *
+		(((100vw - #{$minWidth + px})) / ((#{$maxWidth - $minWidth})))
+	);
+	}
+}
+
+// Подключение шрифта
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff2") format("woff2"),
+			url("../fonts/#{$file_name}.woff") format("woff");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+//TO%
+@function prc($pxOne, $pxTwo){
+	$result: math.div($pxOne, $pxTwo) ;
+	@return $result;
+}
+//REM
+@function rem($px){
+	$result: math.div($px, 16) + rem;
+	@return $result;
+}
+//EM
+@function em($px){
+	$result: math.div($px, 16) + em;
+	@return $result;
+}

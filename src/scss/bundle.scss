@@ -1,0 +1,78 @@
+@import "base/mixins";
+
+//popup
+body{
+	&::before{
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(18,20,22,.31);
+		opacity: 0;
+		pointer-events: none;
+		z-index: 11;
+		transition: all 0.25s ease-in-out 0s;
+	}
+	&.js_popup-on{
+		overflow: hidden;
+		&::before{
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+}
+.popup-window {
+	opacity: 0;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	pointer-events: none;
+	max-width: 904px;
+	width: calc(100% - 30px);
+	background-color: #f8f8f8;
+
+}
+.js_registration-window-open .popup-window.registration-window{
+	opacity: 1;
+	pointer-events: all;
+	z-index: 15;
+	transition: all 0.25s ease-in-out 0s;
+}
+
+.popup-window__close {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	right: 0;
+	top: -40px;
+	cursor: pointer;
+}
+.popup-window__close:after, .popup-window__close:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%) rotate(45deg);
+	-ms-transform: translate(-50%,-50%) rotate(45deg);
+	transform: translate(-50%,-50%) rotate(45deg);
+	background: #fff;
+	width: 16px;
+	height: 2px;
+	-webkit-transform-origin: center;
+	-ms-transform-origin: center;
+	transform-origin: center;
+}
+.popup-window__close:after {
+	-webkit-transform: translate(-50%,-50%) rotate(-45deg);
+	-ms-transform: translate(-50%,-50%) rotate(-45deg);
+	transform: translate(-50%,-50%) rotate(-45deg);
+}
+.popup-window__container {
+	max-height: 90vh;
+	overflow-y: auto;
+}
