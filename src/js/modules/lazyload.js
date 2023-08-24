@@ -16,6 +16,23 @@ function lazyloadlInit() {
 				ibg();
 			}
 		}
+
+		/*//yandex.map
+			if (document.querySelector('#block-map__item')) {
+				let blockMap = document.querySelector('#block-map__item');
+				if ((window.pageYOffset + windowHeight + 500 > blockMap.getBoundingClientRect().top + window.pageYOffset) && !(blockMap.getAttribute('data-init'))) {
+					let incSriptMapAPI = document.createElement('script');
+					incSriptMapAPI.src = '/wp-content/themes/german/assets/js/api-yandex-map.min_en.js';
+					incSriptMapAPI.setAttribute('defer', '');
+					incSriptMapAPI.setAttribute('id', 'js-api-yandex-map');//<script defer src="<?= get_template_directory_uri() ?>/assets/js/api-yandex-map.min_en.js" type="text/javascript"></script>
+					document.body.append(incSriptMapAPI);
+					incSriptMapAPI.onload = () => {
+						ymaps.ready(map_init);
+					}
+					blockMap.dataset.init = true;
+				}
+			}
+		*/
 	}
 
 	function lazyInsert(lazyItem) {
