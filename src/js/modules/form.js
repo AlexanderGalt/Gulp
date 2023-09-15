@@ -1,6 +1,6 @@
 
 
-//cf
+//form
 let contactsForms = document.querySelectorAll('form[role="form"]');
 for (let i = 0; i < contactsForms.length; i++) {
 	contactsForms[i].addEventListener('submit', formSend);
@@ -22,15 +22,12 @@ async function formSend(e) {
 			console.log(result);
 			form.reset();
 			form.classList.remove('_sending');
-			document.body.classList.remove('_order-call-window_open');
-			document.body.classList.add('_thnx-window_open');
-			document.body.classList.add('_popup-on');
+			document.body.classList.remove('js-order-call-window-open');
+			document.body.classList.add('js-thnx-window-open');
+			document.body.classList.add('js-popup-on');
 		} else {
-
 			form.classList.remove('_sending');
 		}
-	} else {
-
 	}
 }
 
@@ -62,18 +59,18 @@ function formValidate(form) {
 function emailTest(input) {
 	return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
 }
-//cf check
-let cf7Check = document.querySelectorAll('.check');
-if (cf7Check.length) {
-	for (let i = 0; i < cf7Check.length; i++) {
-		cf7Check[i].addEventListener('click', (e) => {
-			cf7Check[i].classList.toggle('active');
-			cf7Check[i].closest('.form__notice').querySelector('input').click();
+//notice check
+let noticeCheck = document.querySelectorAll('.check');
+if (noticeCheck.length) {
+	for (let i = 0; i < noticeCheck.length; i++) {
+		noticeCheck[i].addEventListener('click', (e) => {
+			noticeCheck[i].classList.toggle('active');
+			noticeCheck[i].closest('.form__notice').querySelector('input').click();
 		});
 	}
 }
 
-//phonemask
+//phonemask js
 var phoneInputs = document.querySelectorAll('input[name="your-tel"]');
 
 var getInputNumbersValue = function (input) {

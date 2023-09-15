@@ -51,7 +51,7 @@ function lazyloadlInit() {
 	}
 }
 
-//ibg
+//ibg - используется только потомучто Internet Explorer 11 не поддерживает свойство object-fit/object-position, поэтому приходится назначать картинку фоном
 /*
 function ibg() {
 	let ibg = document.querySelectorAll(".ibg");
