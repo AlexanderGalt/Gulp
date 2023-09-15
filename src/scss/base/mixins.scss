@@ -1,19 +1,19 @@
 
 
-$minWidth: 375;
-$maxWidth: 1920;
-$maxWidthWrapper: 1828;
+$minWidth: 360; // минимальная ширина вьюпорта. Ширина мобильной версии макета. В идиале должен быть 320px.
+$maxWidth: 1440; // максимальная ширина вьюпорта. Ширина десктопной версии макета. В идиале должен быть 1920px.
+$maxWidthWrapper: 1240; // максимальная ширина wrapper.
 
-$textColor: #494949;
-$fontSize: 16px;
-$fontFamily: 'CeraPro';
+$textColor: #fff; // самый часто используемый цвет текста.
+$fontSize: 15px; // самый часто используемый разамер шрифта.
+$fontFamily: 'GothamPro'; // основной шрифт
 
 @use "sass:math";
 // Адаптивное свойство
 @mixin adaptiv-value($property, $startSize, $minSize, $type:0){
 	$addSize: $startSize - $minSize;
 	@if $type==1 {
-		//Только если меньше контейнера
+		//Только если меньше контейнера. Т.е. для свойств которым нельзя указать max (font-size, gap, margin, padding)
 		#{$property}: $startSize + px;
 		@media (max-width: #{$maxWidth + px}) {
 			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth}));
@@ -22,11 +22,12 @@ $fontFamily: 'CeraPro';
 		//Только если больше контейнера
 		#{$property}: $startSize + px;
 		@media (mini-width: #{$maxWidthWrapper + px}){
-			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw -$minWidth + px) / #{$maxWidth - $minWidth}));
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - $minWidth + px) / #{$maxWidth - $minWidth}));
 		}
 	}@else{
-		//Всегда
+		//Всегда. Т.е. для свойств которым можно указать max(width, height)
 		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth})); //calc(12px + (20 + 20 * 0.7) * ((100vw - 320px) / 1920));
+		max-#{$property}: $startSize + px;
 	}
 }
 

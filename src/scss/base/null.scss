@@ -11,25 +11,19 @@ aside,
 nav,
 footer,
 header,
-section {
+section{
 	display: block;
 }
-a {
+a,
+a:hover,
+a:visited {
 	text-decoration: none;
 	cursor: pointer;
 	color: inherit;
 }
-a:visited {
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: none;
-}
-ul{
+ul, ol{
 	margin: 0;
 	padding: 0;
-}
-ul{
 	list-style: none;
 }
 img{
@@ -40,19 +34,13 @@ img{
 	height: 100%;
 	object-fit: cover;
 }
-.ibg{
+.ibg{ // fls ibg
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
 	& img{
-	width: 0;
-	height: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	visibility: hidden;
+		display: none;
 	}
 }
 h1,
@@ -63,46 +51,55 @@ h5,
 h6 {
 	font-weight: inherit;
 	font-size: inherit;
-	color: inherit;
-
+	color: #494949; // указать текст заголовоков контента
 }
+/* удалить если макет - дерьмо и одноуровневые заголовоки имеют разные стили
+	h2{
+		font-weight: 500;
+		@include adaptiv-value('font-size',28,20,1);
+		line-height: prc(38,28);
+		@include adaptiv-value('margin-bottom',24,18,1);
+	}
+	h3{
+		font-weight: 500;
+		@include adaptiv-value('font-size',24,16,1);
+		line-height: prc(34,24);
+		@include adaptiv-value('margin-bottom',24,18,1);
+	}
+	h4{
+		font-weight: 500;
+		@include adaptiv-value('font-size',20,14,1);
+		line-height: prc(30,20);
+		@include adaptiv-value('margin-bottom',24,18,1);
+	}
+*/
 p:not(:last-child){
 	margin: 0px 0px 24px 0px;
 }
-h2{
-	font-weight: 500;
-	@include adaptiv-value('font-size',28,20,1);
-	line-height: prc(38,28);
-	margin: 0px 0px 24px 0px;
-}
-h3{
-	font-weight: 500;
-	@include adaptiv-value('font-size',24,16,1);
-	line-height: prc(34,24);
-	margin: 0px 0px 24px 0px;
-}
-h4{
-	font-weight: 500;
-	@include adaptiv-value('font-size',20,14,1);
-	line-height: prc(30,20);
-	margin: 0px 0px 24px 0px;
-}
-
 input,
 button,
 textarea {
-	font-family: $fontFamily;
-	font-size: inherit;
+	font-family: inherit; // если не указать наследование будет братся из юзер агента
+	font-size: inherit; // если не указать наследование будет братся из юзер агента
+	color: inherit; // если не указать наследование будет братся из юзер агента
+	font-weight: inherit; // если не указать наследование будет братся из юзер агента
+	line-height: inherit; // если не указать наследование будет братся из юзер агента
+	letter-spacing: inherit; // если не указать наследование будет братся из юзер агента
 	background: none;
+	outline: 0;
+}
+*::placeholder{
+	line-height: inherit; // !important наследуется кроме инпута
+	color: inherit; // !important если не указать наследование будет братся из юзер агента
 }
 html,
 body {
 	height: 100%;
-	line-height: prc(24,16) * 100%;
-	font-weight: 400;
+	line-height: 24/16 * 100%; // самое частоиспольземое значение сайта
+	font-weight: 400; // самое частоиспольземое значение сайта
 	font-size: $fontSize;
 	color: $textColor;
-	background-color: #fff;
+	background-color: #fff; // самое частоиспольземое значение сайта
 	font-family: $fontFamily, sans-serif;
 	margin: 0;
 }
@@ -116,12 +113,40 @@ main{
 section{
 	position: relative;
 }
-
-.wrapper{
+[class$="__wrapper"]{
 	max-width: $maxWidthWrapper + px;
 	margin: 0px auto;
-	width: calc(100% - (60px + 90 * ((100vw - 375px) / 1545)) );
-	
+	width: calc(100% - (40px + 160 * ((100vw - 360px) / 1080)) ); //отступ .wrapper от краёв вьюпорта в мобайл и в десктопе
+}
+[class$="__title"]{
+	@include adaptiv-value('font-size',32,24,1); //указать стили заголовоков секций
+	font-weight: 500;
+	color: #000;
+	@include adaptiv-value('line-height',36,26,1);
+	@include adaptiv-value('margin-bottom',24,16,1);
+	text-transform: uppercase;
+}
+[class$="__bg"]{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+[class$="__btn"]{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	color: #fff;
+	background: #000;
+	@include adaptiv-value('font-size',24,16,1);
+	@include adaptiv-value('line-height',36,26,1);
+	width: 216px;
+	height: 52px;
+	cursor: pointer;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 .clearfix:after {
 	content: ".";

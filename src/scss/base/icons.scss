@@ -10,7 +10,7 @@ line-height: 1;
 }
 
 [class^="_icon-"],
-[class*=" _icon-"] {
+[class*="_icon-"] {
 &:before {
 	@extend %ic;
 	display: inline;

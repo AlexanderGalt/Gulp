@@ -1,37 +1,47 @@
 /* Обнуление */
 *,
-*::before
+*::before,
 *::after {
 	padding: 0;
 	margin: 0;
 	border: 0;
 	box-sizing: border-box;
 }
-a {
-	text-decoration: none;
+aside,
+nav,
+footer,
+header,
+section{
+	display: block;
 }
-ul,
-ol,
-li {
+a,
+a:hover,
+a:visited {
+	text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+}
+ul, ol{
+	margin: 0;
+	padding: 0;
 	list-style: none;
 }
 img{
 	vertical-align: top;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
-.ibg{
+.ibg{ /* fls ibg. Для IE11 */
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
 }
 .ibg img{
-	width: 0;
-	height: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	visibility: hidden;
+	display: none;
 }
 h1,
 h2,
@@ -41,14 +51,109 @@ h5,
 h6 {
 	font-weight: inherit;
 	font-size: inherit;
+	color: #494949; /* указать текст заголовоков контента*/
+}
+/* удалить если макет - дерьмо и одноуровневые заголовоки имеют разные стили
+	h2{
+		font-weight: 500;
+		font-size',28,20,1);
+		line-height: prc(38,28);
+		margin-bottom',24,18,1);
+	}
+	h3{
+		font-weight: 500;
+		font-size',24,16,1);
+		line-height: prc(34,24);
+		margin-bottom',24,18,1);
+	}
+	h4{
+		font-weight: 500;
+		font-size',20,14,1);
+		line-height: prc(30,20);
+		margin-bottom',24,18,1);
+	}
+*/
+p:not(:last-child){
+	margin: 0px 0px 24px 0px;
+}
+input,
+button,
+textarea {
+	font-family: inherit; /* если не указать наследование будет братся из юзер агента */
+	font-size: inherit; /* если не указать наследование будет братся из юзер агента */
+	color: inherit; /* если не указать наследование будет братся из юзер агента */
+	font-weight: inherit; /* если не указать наследование будет братся из юзер агента */
+	line-height: inherit; /* если не указать наследование будет братся из юзер агента */
+	letter-spacing: inherit; /* если не указать наследование будет братся из юзер агента */
+	background: none;
+	outline: 0;
+}
+*::placeholder{
+	line-height: inherit; /* !important наследуется кроме инпута */
+	color: inherit; /* !important если не указать наследование будет братся из юзер агента */
 }
 html,
 body {
 	height: 100%;
-	line-height: 1;
+	line-height: 1.4; /* самое частоиспольземое значение сайта*/
+	font-weight: 400; /* самое частоиспольземое значение сайта*/
 	font-size: 14px;
-	background-color: #333;
-	font-family: Aria, "Helvetica Neue", Helvetica, sans-serif;
+	color: #494949;
+	background-color: #fff; /* самое частоиспольземое значение сайта*/
+	font-family: Montserrat, sans-serif;
+	margin: 0;
 }
-/*---------------------------------*/
+body{
+	display: flex;
+	flex-direction: column;
+}
+main{
+	flex: 1 0 auto;
+}
+section{
+	position: relative;
+}
+[class$="__wrapper"]{
+	max-width: 1920px;
+	margin: 0px auto;
+	width: calc(100% - (40px + 160 * ((100vw - 360px) / 1080)) ); /*отступ .wrapper от краёв вьюпорта в мобайл и в десктопе*/
+}
+[class$="__title"]{
+	font-size: 24px; /*указать стили заголовоков секций*/
+	font-weight: 500;
+	color: #000;
+	line-height: 28px;
+	margin-bottom: 24px;
+	text-transform: uppercase;
+}
+[class$="__bg"]{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+[class$="__btn"]{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	color: #fff;
+	background: #000;
+	font-size: 24px;
+	line-height: 28px;
+	width: 216px;
+	height: 52px;
+	cursor: pointer;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	}
+/*-END-NULL--------------------------------*/
 
