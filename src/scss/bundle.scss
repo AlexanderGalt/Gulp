@@ -15,7 +15,7 @@ body{
 		z-index: 11;
 		transition: all 0.25s ease-in-out 0s;
 	}
-	&.js_popup-on{
+	&.js-popup-on{
 		overflow: hidden;
 		&::before{
 			opacity: 1;
@@ -26,24 +26,20 @@ body{
 .popup-window {
 	opacity: 0;
 	position: fixed;
-	top: 50%;
 	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
+	top: 50%;
+	z-index: 15;
 	transform: translate(-50%,-50%);
 	pointer-events: none;
 	max-width: 904px;
 	width: calc(100% - 30px);
-	background-color: #f8f8f8;
+	transition: opacity 0.3s ease-in-out 0s;
 
 }
-.js_registration-window-open .popup-window.registration-window{
+.js-order-call-window-open .popup-window.order-call-window{
 	opacity: 1;
 	pointer-events: all;
-	z-index: 15;
-	transition: all 0.25s ease-in-out 0s;
 }
-
 .popup-window__close {
 	position: absolute;
 	width: 24px;
