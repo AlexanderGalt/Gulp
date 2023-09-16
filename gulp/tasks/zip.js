@@ -10,6 +10,6 @@ export const zip = () => {
 				message: "Error: <%= error.message %>"
 			})
 		))
-		.pipe(zipPlugin(`${app.path.rootFolder}.zip`))
+		.pipe(zipPlugin(`${app.path.rootFolder}.zip`)) // архивирует dist
 		.pipe(app.gulp.dest('./'));
 }

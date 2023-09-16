@@ -8,11 +8,10 @@ export const svgSprive = () => {
 				message: "Error: <%= error.message %>"
 			})
 		))
-		.pipe(svgSprite({
+		.pipe(svgSprite({ // создавать страницу с перечнем иконок
 			mode: {
 				stack: {
 					sprite: `../icons/icons.svg`,
-					// Создавать страницу с перечнем иконок
 					example: true
 				}
 			},

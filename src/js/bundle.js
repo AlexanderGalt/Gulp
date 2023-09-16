@@ -1,5 +1,5 @@
 "use strict"
-
+// import { isWebp } from "modules/isWebp.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//form send
 	//modules\form.js
 
-	//проверка браузера на поддержку формата Webp
+	//проверка браузера на поддержку формата Webp и добавление соответствующего класс в тег <html>. Это нужно для отображения фоновых картинок из css. gulp\tasks\scss.js 33
 	function isWebp() {
 		//проверка поддержки webp
 		function testWebP(callback) {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			};
 			webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
 		}
-		// добавление класса _webp или _no-webp для HTML
+		// добавление класса webp или no-webp для HTML
 		testWebP(function (support) {
 			let className = support === true ? 'webp' : 'no-webp';
 			document.documentElement.classList.add(className);

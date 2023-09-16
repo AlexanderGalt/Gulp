@@ -1,6 +1,7 @@
 "use strict"
 document.addEventListener('DOMContentLoaded', () => {
 	//обёртка лайдеров
+	/*
 	let sliders = document.querySelectorAll('._swiper');
 	if (sliders) {
 		for (let index = 0; index < sliders.length; index++) {
@@ -83,5 +84,5 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		},
 	});
-
+	*/
 });

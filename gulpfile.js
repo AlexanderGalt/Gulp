@@ -15,17 +15,17 @@ global.app = {
 }
 
 // Импорт задач
-import { copy } from "./gulp/tasks/copy.js";
-import { reset } from "./gulp/tasks/reset.js";
-import { html } from "./gulp/tasks/html.js";
-import { server } from "./gulp/tasks/server.js";
-import { scss } from "./gulp/tasks/scss.js";
-import { js } from "./gulp/tasks/js.js";
-import { images } from "./gulp/tasks/images.js";
-import { otfToTtf, ttfToWoff, fontsStyle } from "./gulp/tasks/fonts.js";
-import { svgSprive } from "./gulp/tasks/svgSprive.js";
-import { zip } from "./gulp/tasks/zip.js";
-import { ftp } from "./gulp/tasks/ftp.js";
+import { copy } from "./gulp/tasks/copy.js"; // копирует files в dist
+import { reset } from "./gulp/tasks/reset.js"; // удаляет файлы из dist
+import { html } from "./gulp/tasks/html.js"; // сборка html файлов (header, footer), обработка путей '@img' (1/2), добавление picture, добавления версий файлов, выгрузка html файлов в dist, обновление страницы локального сервера сервера.
+import { server } from "./gulp/tasks/server.js"; // нстройка и запуск локального сервера.
+import { scss } from "./gulp/tasks/scss.js"; // компеляция scss в css без сжатия ('expanded'), группировка медиа запросов, добавление в css правил по отображению webp, если тег html содержит соответствующий класс, добавление префиксов для кроссбраузерности, выгрузка css файлов в dist, обновление страницы локального сервера сервера.
+import { js } from "./gulp/tasks/js.js"; // webpack, выгрузка js файлов в dist, обновление страницы локального сервера сервера.
+import { images } from "./gulp/tasks/images.js"; // сжимает картинки, создаёт их webp версию и выгружает их в dist, выгрузка .svg в dist без изменений, обновление страницы локального сервера сервера.
+import { otfToTtf, ttfToWoff, fontsStyle } from "./gulp/tasks/fonts.js"; // конвертирует исходные шрифты в .ttf, тем самым подготовив их к конвертации в нужные нам оптимизированые форматы .woff и .woff2. Конвертирует в woff и .woff2. Если css файлы с подключениями шрифтов не создаан, создаёт его и заполняет.
+import { svgSprive } from "./gulp/tasks/svgSprive.js"; // создаёт .svg спрайт и выгружает его в dist
+import { zip } from "./gulp/tasks/zip.js"; // архивирует dist
+import { ftp } from "./gulp/tasks/ftp.js"; // выгружает dist по ftp
 
 // Наблюдение за изменениями в файлах
 function watcher() {
@@ -59,7 +59,7 @@ export { deployFTP }
 // Выполнение сценария по умолчанию
 gulp.task('default', dev);
 
-//перенести файлы gulp, src, gulpfile.js, package.json
+//перенести файлы gulp, src, gulpfile.js, package.json, package-lock.json
 //"del":"^6.1.1"
 
 // npm i - установука gulp в новый проект.
@@ -69,3 +69,9 @@ gulp.task('default', dev);
 // npm run svgSprive - создать SVGспрайта.
 // npm run zip - создать архив продакшана.
 // npm run deploy - выгрузка продакшана по фтп.
+
+// закоментил добавление версий к файлам в 'gulp\tasks\html.js'
+// закоментил переимнование ccs файлов в 'min.css' 'New-project\gulp\tasks\scss.js'
+// закоментил не сжатого дуля css 'New-project\gulp\tasks\scss.js'
+// закоментил сжатие css файлов 'New-project\gulp\tasks\scss.js'
+// закоментил webpack 'New-project\gulp\tasks\js.js'
