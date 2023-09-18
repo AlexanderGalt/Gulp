@@ -8,12 +8,25 @@ export const js = () => {
 				message: "Error: <%= error.message %>"
 			})
 		))
-		/* закоментил, т.к. для не большиз проектов он не нужен.
+		/*
 		.pipe(webpack({
 			mode: app.isBuild ? 'production' : 'development',
-			output: {
-				filename: 'app.min.js',
-			}
+			//devtool: "inline-source-map",
+			entry: {
+				home: {
+					import: ['./src/js/bundle.js', './src/js/home.js'],
+				},
+				//new_page: {
+				//	import: ['./src/js/bundle.js', './src/js/new-page.js'],
+				//	filename: 'new-page.js',
+				//}
+			},
+			//optimization: {
+			//	splitChunks: {
+			//		chunks: 'all', // находит общие зависимости в точках входа и выносит их в отдельный файл, чтобы избежать дублировонного подключения пакетов. Бессмыслено для bundle.js, т.к. его мы сами выносим в отдельную точку входа.
+			//	},
+			//},
+			//Info:https://webpack.js.org/concepts/#entry
 		}))
 		*/
 		.pipe(app.gulp.dest(app.path.build.js))
