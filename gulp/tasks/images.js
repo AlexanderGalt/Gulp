@@ -26,6 +26,7 @@ export const images = () => {
 		.pipe(app.plugins.if(app.isBuild,app.gulp.src(app.path.src.images))) // получаем все исходные изображения
 		.pipe(app.plugins.if(app.isBuild,app.plugins.newer(app.path.build.images))) // выделяем для работы только новые исходные картинки, которых ещё нет в dist, а не все заново.
 		*/
+		/* автоматическую конвертациую в webp и добавлние picture в html
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
@@ -38,6 +39,7 @@ export const images = () => {
 				app.gulp.dest(app.path.build.images) // выгружаем картинки webp в dist
 			)
 		)
+		*/
 		.pipe(app.gulp.src(app.path.src.svg)) // берём исходные svg
 		.pipe(app.gulp.dest(app.path.build.images)) // выгружаем svg картинки webp в dist
 		.pipe(app.plugins.browsersync.stream()); // обновляем страницу локального сервера.

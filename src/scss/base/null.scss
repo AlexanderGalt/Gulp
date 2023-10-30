@@ -19,7 +19,7 @@ a:hover,
 a:visited {
 	text-decoration: none;
 	cursor: pointer;
-	color: inherit;
+	color: inherit; // ??
 }
 ul, ol{
 	margin: 0;
@@ -76,6 +76,9 @@ h6 {
 p:not(:last-child){
 	margin: 0px 0px 24px 0px;
 }
+label{
+	display: block;
+}
 input,
 button,
 textarea {
@@ -87,6 +90,7 @@ textarea {
 	letter-spacing: inherit; // если не указать наследование будет братся из юзер агента
 	background: none;
 	outline: 0;
+	width: 100%;
 }
 *::placeholder{
 	line-height: inherit; // !important наследуется кроме инпута
@@ -137,16 +141,20 @@ section{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex: 1 0;
 	border-radius: 4px;
 	color: #fff;
 	background: #000;
 	@include adaptiv-value('font-size',24,16,1);
-	@include adaptiv-value('line-height',36,26,1);
-	width: 216px;
+	line-height: 1;
+	font-weight: 500;
 	height: 52px;
 	cursor: pointer;
 	text-transform: uppercase;
-	white-space: nowrap;
+	&._white{
+		color: #004E81;
+		background: #fff;
+	}
 }
 .clearfix:after {
 	content: ".";
