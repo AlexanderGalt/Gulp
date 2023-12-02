@@ -14,7 +14,7 @@ async function formSend(e) {
 	if (error === 0) {
 		form.classList.add('_sending');
 		let response = await fetch(form.getAttribute('action'), {
-			method: form.getAttribute('method'),
+			method: 'POST',
 			body: formData
 		});
 		if (response.ok) {

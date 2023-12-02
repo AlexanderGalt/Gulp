@@ -1,5 +1,15 @@
 @import "base/mixins";
 
+// footer
+.footer {
+
+	&__wrapper {
+	}
+}
+.body-footer {
+}
+
+
 //popup
 body{
 	&::before{
@@ -33,12 +43,11 @@ body{
 	pointer-events: none;
 	max-width: 904px;
 	width: calc(100% - 30px);
-	transition: opacity 0.3s ease-in-out 0s;
-
 }
 .js-order-call-window-open .popup-window.order-call-window{
 	opacity: 1;
 	pointer-events: all;
+	transition: opacity 0.3s ease-in-out;
 }
 .popup-window__close {
 	position: absolute;

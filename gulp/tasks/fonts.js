@@ -35,12 +35,13 @@ export const ttfToWoff = () => {
 }
 
 export const fontsStyle = () => { //создаём css файл подключаения шрифтов
-	let fontsFile = `${app.path.srcFolder}/scss/fonts.scss`; // назначаем файл стилей подключения шрифтов
+	let fontsFile = `${app.path.srcFolder}/scss/base/fonts.scss`; // назначаем файл стилей подключения шрифтов
 	fs.readdir(app.path.build.fonts, function (err, fontsFiles) { // проверяем, существуют ли файлы шрифтов
 		if (fontsFiles) { // проверяем, существует ли файл стилей для подключения шрифтов
 			if (!fs.existsSync(fontsFile)) {
 				fs.writeFile(fontsFile, '', cb); // если файла стилей нет, создаём его
 				let newFileOnly;
+				fs.appendFile(fontsFile, `/*-BEGINE-FONTS--------------------------------*/\n`, cb);
 				for (var i = 0; i < fontsFiles.length; i++) {
 					//Записываем подключения шрифтов в файл стилей
 					let fontFileName = fontsFiles[i].split('.')[0];
@@ -70,8 +71,9 @@ export const fontsStyle = () => { //создаём css файл подключа
 						newFileOnly = fontFileName;
 					}
 				}
+				fs.appendFile(fontsFile, `\r\n\n//thin - 100\n//Extra Light - 200\n//light - 300\n//regular, normal - 400\n//medium - 500\n//semi bold - 600\n//bold - 700\n//extra bold - 800\n//heavy, black - 900\n/*-END-FONTS--------------------------------*/`, cb);
 			} else {
-				console.log("Файл scss/fonts.scss уже существует. Для обновления файла нужно его удалить!"); //Если файл есть, выводим сообщение
+				console.log("Файл scss/base/fonts.scss уже существует. Для обновления файла нужно его удалить!"); //Если файл есть, выводим сообщение
 			}
 		}
 	});

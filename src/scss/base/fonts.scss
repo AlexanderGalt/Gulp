@@ -1,10 +1,5 @@
-@font-face{
-	font-family: CeraPro;
-	font-display: swap;
-	src: url("../fonts/CeraPro-Bold.woff2") format("woff2"), url("../fonts/CeraPro-Bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-}
+
+/*-BEGINE-FONTS--------------------------------*/
 @font-face{
 	font-family: CeraPro;
 	font-display: swap;
@@ -13,13 +8,6 @@
 	font-style: normal;
 }
 @font-face{
-	font-family: CeraPro;
-	font-display: swap;
-	src: url("../fonts/CeraPro-Regular.woff2") format("woff2"), url("../fonts/CeraPro-Regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-}
-@font-face{ // если принято решение работать с svg иконками через семейство шрифтов, а не через спрайт или по обычному, через тег img.
 	font-family: icons;
 	font-display: swap;
 	src: url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.woff") format("woff");
@@ -34,12 +22,15 @@
 	font-style: normal;
 }
 
-// thin - 100
-// Extra Light - 200
-// light - 300
-// regular, normal - 400
-// medium - 500
-// semi bold - 600
-// bold - 700
-// extra bold - 800
-// heavy, black - 900
+
+//thin - 100
+//Extra Light - 200
+//light - 300
+//regular, normal - 400
+//medium - 500
+//semi bold - 600
+//bold - 700
+//extra bold - 800
+//heavy, black - 900
+/*-END-FONTS--------------------------------*/
+

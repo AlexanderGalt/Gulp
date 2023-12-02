@@ -1,3 +1,4 @@
+@use "sass:math";
 /* Обнуление */
 *,
 *::before,
@@ -19,7 +20,7 @@ a:hover,
 a:visited {
 	text-decoration: none;
 	cursor: pointer;
-	color: inherit; // ??
+	color: inherit; // ?
 }
 ul, ol{
 	margin: 0;
@@ -99,7 +100,7 @@ textarea {
 html,
 body {
 	height: 100%;
-	line-height: 24/16 * 100%; // самое частоиспольземое значение сайта
+	line-height: 150%; // самое частоиспольземое значение сайта
 	font-weight: 400; // самое частоиспольземое значение сайта
 	font-size: $fontSize;
 	color: $textColor;
@@ -120,7 +121,7 @@ section{
 [class$="__wrapper"]{
 	max-width: $maxWidthWrapper + px;
 	margin: 0px auto;
-	width: calc(100% - (40px + 160 * ((100vw - 360px) / 1080)) ); //отступ .wrapper от краёв вьюпорта в мобайл и в десктопе
+	width: calc(100% - (36px + ($maxWidth - $maxWidthWrapper) * ((100vw - 360px) / 1080)) ); //отступ .wrapper от краёв вьюпорта в мобайл и в десктопе
 }
 [class$="__title"]{
 	@include adaptiv-value('font-size',32,24,1); //указать стили заголовоков секций

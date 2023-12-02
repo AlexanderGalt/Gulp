@@ -12,12 +12,12 @@ export const html = () => {
 		))
 		.pipe(fileinclude()) // сборка файлов html (header, footer)
 		.pipe(app.plugins.replace(/@img\//g, 'img/')) // обработка путей '@img' (1/2)
-		.pipe(
-			app.plugins.if(
-				app.isBuild,
-				webpHtmlNosvg()
-			)
+		.pipe( // add pictur в HTML
+			//app.plugins.if( app.isBuild,
+			webpHtmlNosvg()
+			//)
 		)
+
 		/* добавление версий к файлам js и css в режиме build, чтобы видеть не кэшированный результат в браузере. Закоментил, т.к. это нужно только для работы верстальчщика, чтобы заказчик видел новые внесённые правки. Аналог shift+f5.
 		.pipe(
 			app.plugins.if(
